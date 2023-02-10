@@ -31,6 +31,7 @@ class UserRepositoryTest {
     }
 
 
+    @Test
     @DisplayName("Duplicate")
 //    @ParameterizedTest
 //    @ValueSource(ints = {1, 3, 5})
