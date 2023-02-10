@@ -4,6 +4,7 @@ import com.epam.autocode.compare.UserFirstNameComparator;
 import com.epam.autocode.compare.UserLastNameComparator;
 import com.epam.autocode.entity.User;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -29,6 +30,7 @@ class UserRepositoryTest {
         testUsers  = repository.createUsers(initUserCount);
     }
     @Test
+    @DisplayName("Duplicate")
     void givenUserFirstNameComparator_whenUsersCompare_thenSuccess(){
 
         List<User> afterComparing = testUsers.stream()
@@ -38,6 +40,7 @@ class UserRepositoryTest {
         assertTrue(isSorted(afterComparing, userFNC));
     }
     @Test
+    @DisplayName("Duplicate")
     void givenUserLastNameComparator_whenUsersCompare_thenSuccess(){
 
         List<User> afterComparing = testUsers.stream()
