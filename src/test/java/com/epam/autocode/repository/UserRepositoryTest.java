@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,16 +31,20 @@ class UserRepositoryTest {
         Integer initUserCount = 9;
         testUsers  = repository.createUsers(initUserCount);
     }
-    @Test
+
+
     @DisplayName("Duplicate")
-    void givenUserFirstNameComparator_whenUsersCompare_thenSuccess(){
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    void givenUserFirstNameComparator_whenUsersCompare_thenSuccess(int number){
 
         List<User> afterComparing = testUsers.stream()
                 .sorted(firstNameComparator)
                 .collect(Collectors.toList());
-
+        assertTrue(number > -200);
         assertTrue(isSorted(afterComparing, userFNC));
     }
+
     @Test
     @DisplayName("Duplicate")
     void givenUserLastNameComparator_whenUsersCompare_thenSuccess(){
